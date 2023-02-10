@@ -1,0 +1,118 @@
+.title1{
+  @include title1
+}
+
+.title2{
+  @include title2
+}
+
+.title3{
+  @include title3
+}
+
+.title4{
+  @include title4
+}
+
+.text3{
+  @include text3;
+}
+
+.btn_tag{
+  color: #0065B3;
+  border: 2px solid #EBF3F9;
+  padding: s(3) s(10);
+  border-radius: 16px;
+  &:not(:hover){
+    text-decoration: none;
+  }
+
+  &:hover{
+    background-color: #EBF3F9;
+  }
+
+  &:focus{
+    background-color: #ffdf0f;
+    border-color: #000;
+  }
+}
+
+//RESETS
+.idsk-in-page-navigation__link-panel-button::before{
+  box-sizing: content-box;
+}
+
+.govuk-checkboxes__label::after{
+  box-sizing: content-box;
+}
+
+.govuk-link-colored{
+  &:not(:hover){
+    color: inherit;
+  }
+}
+
+.js-enabled .govuk-accordion__section-button{
+  color: $color;
+}
+
+.idsk-in-page-navigation__link-title{
+  color: $color;
+}
+
+.idsk-in-page-navigation__list-item--active:before{
+  box-sizing: content-box;
+  top: 8px;
+}
+
+hr{
+  &.bold{
+    border: 0;
+    border-top: 5px solid $color;  
+  }
+}
+
+//ELM IMAGE
+.elm_image{
+  position: relative;
+  padding-left: 23%;
+
+  img:first-child{
+    display: block;
+    width: 100%;
+  }
+
+  img:last-child{
+    width: 30%;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.25);
+  }
+}
+
+.idsk-card-custom{
+  margin: 0;
+  background-color: $color3;
+
+  img{
+    display: block;
+  }
+
+  .idsk-heading{
+    @include title4
+  }
+
+  .idsk-card-title.govuk-link{
+    color: inherit;
+  }
+
+  .idsk-card-content{
+    padding: 15px 11px 25px 11px;
+  }
+
+  a:hover{
+    text-decoration: none;
+  }
+}

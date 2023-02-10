@@ -1,0 +1,306 @@
+//DISPLAY
+.display{
+  @include createPair('d' , 'display', ('flex', 'block', 'inline-block', 'inline'), ('flex', 'block', 'iblock', 'inline'), ('lgm', 'lg'));
+}
+
+.color{
+  color: $color;
+
+  @include createList('color' , 'color', $colors);
+
+  @include createList('color' , 'color', $colors, '_hover', ':hover');
+
+  @include createList('color' , 'color', $colors, '_strong strong');
+
+  @include createList('color_grey' , 'color', $colors_grey);
+
+  @include createList('color' , 'color', $colors, '_before', ':before');
+
+  &_white{
+    color: #fff;
+  }
+
+  &_white_hover:hover{
+    color: #fff; 
+  }
+
+  &_primary{
+    color: var(--color-primary, $color1);
+  }
+
+  &_primary_strong{
+    strong{
+      color: var(--color-primary, $color1);  
+    }
+
+    h1,h2,h3,h4{
+      color: var(--color-primary, $color1); 
+    }
+  }
+
+  &_primary_anchor{
+    a:not([class]){
+      color: var(--color-primary, $color1);  
+    }    
+  }
+}
+
+.stroke{
+  @include createList('stroke' , 'stroke', $colors);  
+
+  &_primary{
+    stroke: var(--color-primary, $color1);
+  }
+
+  &_white{
+    stroke: #fff
+  }
+}
+
+.bg{
+  @include createList('bg' , 'background-color', $colors);
+
+  @include createList('bg_grey' , 'background-color', $colors_grey);
+
+  @include createList('bg' , 'background-color', $colors, '_hover', ':hover');
+
+  @include createList('bg' , 'background-color', $colors, '_before', ':before');
+
+  @include createList('bg' , 'background-color', $colors, '_after', ':after');
+
+  &_white{
+    background-color: #fff;
+  }
+
+  &_half1{
+    background: linear-gradient(180deg, $c3 0%, $c3 50%, #fff 50%, #fff 100%);
+  }
+}
+
+.opa{
+  &7{
+    opacity: .7;
+  }
+}
+
+
+.flex{  
+  &-wrap{
+    flex-wrap: wrap;
+  }
+}
+
+/**clear**/
+.cf:after {
+  content:"";
+  display:table;
+  clear:both;
+}
+
+.clear {
+  clear:both;
+  font-size:1px;
+  height:0.01px;
+  line-height:1px;
+  margin:0;
+  padding:0;
+}
+
+/**HELP*/
+.text{
+  @include createPair('text_' , 'text-align', ('center', 'left', 'right'), '', ('lgm', 'lg', 'mdm', 'md', 'smm'));
+
+  &_uc{
+    text-transform: uppercase;
+  }
+
+  &_ul{
+    text-decoration: underline;
+  }
+
+  &_nowrap{
+    white-space: nowrap;
+  }
+
+  &_ul_hover:hover{
+    text-decoration: underline;  
+  }
+
+  &_ul_nohover:not(:hover){
+    text-decoration: underline;  
+  }
+
+  @include createList('text_w' , 'font-weight', (100,200,300,400,500,600,700,800,900), '00');
+
+  &_s16{
+    font-size: 16px;
+    line-height: $lineheight16;
+  }
+
+  &_fs16{
+    font-size: 16px;
+  }
+
+  &_s18{
+    font-size: 18px;
+    line-height: $lineheight18;
+  }
+
+  &_s20{
+    font-size: 20px;
+    line-height: $lineheight20;
+  }
+
+  &_wrap{
+    overflow-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+  }
+}
+
+.wmax{
+  $v1: ('60px', '220px', '360px', '100%');
+  $v2: (60, 220, 360, '100p');
+  @include createPair('wmax' , 'max-width', $v1 , $v2, ('lgm', 'lg', 'mdm'));  
+}
+
+.wmin{
+  $v1: ('60px', '220px', '100%');
+  $v2: (60, 220, '100p');
+  @include createPair('wmin' , 'min-width', $v1 , $v2, ('lgm', 'lg', 'mdm'));  
+}
+
+.w{
+  $v1: ('60px', '100%', 'auto');
+  $v2: (60, '100p', 'auto');
+  @include createPair('w' , 'width', $v1 , $v2, ('lgm', 'lg', 'mdm'));  
+}
+
+.h{
+  @include createPair('h' , 'height', ('auto', '100%'), ('auto', '100p'), ('lgm', 'lg', 'mdm'));  
+}
+
+.wh{
+  &9{
+    width: 9px;
+    height: 9px;
+    flex: 0 0 9px;
+  }
+
+  &12{
+    width: 12px;
+    height: 12px;
+    flex: 0 0 12px;
+  }
+
+  &14{
+    width: 14px;
+    height: 14px;
+    flex: 0 0 14px;
+  }
+
+  &16{
+    width: 16px;
+    height: 16px;
+    flex: 0 0 16px;
+  }
+
+  &18{
+    width: 18px;
+    height: 18px;
+    flex: 0 0 18px;
+  }
+
+  &26{
+    width: 26px;
+    height: 26px;
+    flex: 0 0 26px;
+  }
+
+  &30{
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+  }
+}
+
+/***FLOATS***/
+.fl{
+  float: left;
+}
+
+.fr{
+  float: right;
+}
+
+/*RELATIVE*/
+.pos_rel{
+  position: relative;
+}
+
+.pos_abs{
+  position: absolute;
+}
+
+.block{
+  &_center{
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &_right{
+    margin-left: auto;
+    margin-right: 0;
+  }
+
+  @include lgm{
+    &-lgm{
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+.hidden{
+  display: none !important;
+}
+
+.img_block{
+  display: block;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.hide{  
+  @include createPair('hide' , 'display', ('none !important'), (''), ('xlm', 'lgm', 'lg', 'md', 'mdm'), 'ignore');
+}
+
+.show{
+  &_xlm{
+    @include xl {
+      display: none !important;
+    }
+  }
+
+  &_lgm{
+    @include lg {
+      display: none !important;
+    }
+  }
+
+  &_mdm{
+    @include md {
+      display: none !important;
+    }
+  }
+
+  &_idskmdm{
+    @include md {
+      display: none !important;
+    }
+  }
+}
+
+.oh{
+  overflow: hidden;
+}

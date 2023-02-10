@@ -1,0 +1,52 @@
+.header_custom{
+  @include idsk_md{
+    position: relative;
+  }
+
+  &_logo{
+    margin: 0;
+    padding: 0;
+
+    @include idsk_mdm{
+      padding: 10px 0;
+    }
+
+    a{
+      display: block;
+    }
+    img{
+      display: block;
+      width: 170px;
+      height: 40px;
+
+      @include mdm{
+       // width: 180px;
+       // height: auto;  
+      }
+    }
+
+    @include mdm{
+
+    }
+  }
+
+  &_buttons{
+    @include idsk_md{
+      display: inline-flex;
+    }    
+
+    .idsk-button{
+      @include idsk_md{
+        white-space: nowrap;
+      }  
+    }
+  }
+
+  .idsk-header-web__main-action-search{
+    @include lgm{
+      @include idsk_md{
+        width: 220px;
+      }  
+    }    
+  }
+}

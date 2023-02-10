@@ -1,0 +1,198 @@
+*, *:after, *:before{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:root{
+  --layout-space: #{$layout_space};
+}
+
+html {
+  cursor: default;
+  font-family: $font;
+  font-size: $fontsize;
+  line-height: $lineheight;
+  font-weight: $fontweight;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  background: $background;
+  overflow-x: hidden;
+  margin: 0 !important;
+  &:not(.disable-scroll-behave){
+    scroll-behavior: smooth;
+    scroll-padding-top: $header_height;
+
+    @include lgm{
+      scroll-padding-top: $header_height_mobile;
+    }
+  }
+
+  &.menuopen{
+    @include lgm{
+      overflow: hidden;
+    }
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;  
+  color: $color;    
+}
+
+body.resizing *:not(.ignore_resizing):not(.slider-custom),
+body.resizing *:not(.ignore_resizing):after,
+body.resizing *:not(.ignore_resizing):before{
+  transition: none !important;
+}
+
+.font1{
+  font-family: $font1;
+}
+
+.container{  
+  position: relative;
+  display: -ms-grid;
+  display: grid;  
+
+  min-height: 100vh;
+  margin: 0 auto;
+  width: 100%;  
+  grid-auto-rows: 1fr auto;
+  -ms-grid-rows: 1fr auto;
+
+  -ms-grid-columns: 1fr;
+  grid-template-columns: 1fr;
+
+  .main{
+    -ms-grid-column: 1;
+    -ms-grid-row: 1;
+
+    grid-column: 1; 
+    grid-row: 1; 
+    width: 100%;    
+    min-width: 100%;   
+  }
+
+  .header.dark + .main{
+    padding-top: $header_height;
+
+    @include lgm{
+      padding-top: $header_height_mobile;  
+    }
+  }
+
+  .footer{
+    -ms-grid-column: 1;
+    -ms-grid-row: 2;
+
+    grid-column: 1; 
+    grid-row: 2;   
+    width: 100%;
+    min-width: 100%;
+  }
+}
+
+@mixin wrapper($w){ 
+  width: calc(100% - #{$layout_space*2});
+  max-width: $w;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wrapper{
+  @include wrapper($layout_width);
+
+  &_xlm{
+    @include xlm{
+      max-width: $layout_width_xlm;
+    }
+  }
+
+  &_lgm{
+    @include lgm{
+      max-width: $layout_width_lgm;
+    }
+  }
+
+  &_mdm{
+    @include mdm{
+      max-width: $layout_width_mdm;
+    }
+  }
+
+  &_smm{
+    @include smm{
+      max-width: $layout_width_smm;
+    }
+  }
+}
+
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+
+/*SICOFILL*/
+.sico{
+  fill: currentColor;
+  display: inline-block;
+  pointer-events: none;  
+}
+
+.sicos{
+  stroke: currentColor;
+  stroke-width: 2px;
+  fill: none;
+  display: inline-block;
+  pointer-events: none;  
+}
+
+.sicofill{
+  fill: currentColor;
+  display: inline-block;
+  pointer-events: none;  
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.svghide{
+  overflow: visible;
+  &_cont{
+    position: absolute;
+    overflow: hidden !important; 
+  }
+}
+
+/**MQ**/
+@include minm {
+  body{
+    min-width: 320px;
+    overflow-x: hidden;
+  }       
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

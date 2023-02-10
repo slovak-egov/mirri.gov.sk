@@ -1,0 +1,500 @@
+// =============================================================================
+// String Replace
+// =============================================================================
+
+@function str-replace($string, $search, $replace: "") {
+	$string: '' + $string;
+	$index: str-index($string, $search);
+
+	@if $index {
+		@return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+	}
+
+	@return $string;
+}
+
+// =============================================================================
+// Font Face
+// =============================================================================
+
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+	$src: null;
+
+	$extmods: (
+		eot: "?",
+		svg: "#" + str-replace($name, " ", "_")
+	);
+
+	$formats: (
+		otf: "opentype",
+		ttf: "truetype"
+	);
+
+	@each $ext in $exts {
+		$extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+		$format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+		$src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+	}
+
+	@font-face {
+		font-family: quote($name);
+		font-style: $style;
+		font-weight: $weight;
+		src: $src;
+	}
+}
+
+// =============================================================================
+// Media queries
+// =============================================================================
+
+@mixin sm {
+	@media (min-width: #{$screen-sm-min}) {
+		@content;
+	}
+}
+ 
+@mixin md {
+	@media (min-width: #{$screen-md-min}) {
+		@content;
+	}
+}
+ 
+@mixin lg {
+	@media (min-width: #{$screen-lg-min}) {
+		@content;
+	}
+}
+ 
+@mixin xl {
+	@media (min-width: #{$screen-xl-min}) {
+		@content;
+	}
+}
+
+@mixin xxl{
+	@media (min-width: #{$screen-xxl-min}) {
+		@content;
+	}
+}
+
+@mixin idsk_sm {
+	@media (min-width: #{$idsk_sm}) {
+		@content;
+	}
+}
+ 
+@mixin idsk_md{
+	@media (min-width: #{$idsk_md} ) {
+		@content;
+	}
+}
+
+@mixin idsk_mdm {
+	@media (max-width: #{$idsk_mdm}) {
+		@content;
+	}
+}
+
+@mixin idsk_tablet{
+	@media (max-width: #{$idsk_tablet}) {
+		@content;
+	}
+}
+
+//MAX WIDTH
+@mixin minm {
+	@media (max-width: #{$screen-min-max}) {
+		@content;
+	}
+}
+
+@mixin ssmm {
+	@media (max-width: #{$screen-ssm-max}) {
+		@content;
+	}
+}
+
+@mixin smm {
+	@media (max-width: #{$screen-sm-max}) {
+		@content;
+	}
+}
+ 
+@mixin mdm {
+	@media (max-width: #{$screen-md-max}) {
+		@content;
+	}
+}
+ 
+@mixin lgm {
+	@media (max-width: #{$screen-lg-max}) {
+		@content;
+	}
+}
+ 
+@mixin xlm {
+	@media (max-width: #{$screen-xl-max}) {
+		@content;
+	}
+}
+
+@mixin xxlm {
+	@media (max-width: #{$screen-xxl-max}) {
+		@content;
+	}
+}
+
+@mixin xxxlm {
+	@media (max-width: #{$screen-xxxl-max}) {
+		@content;
+	}
+}
+
+@mixin fullm {
+	@media (max-width: #{$screen-full-max}) {
+		@content;
+	}
+}
+
+@keyframes sk-pulse {
+  0% {
+    transform: scale(0); 
+  } 100% {
+    transform: scale(1);
+    opacity: 0; 
+  }
+}
+
+@mixin loader{
+  width: 31px;
+  height: 31px;  
+  background-color: $c_orange;    
+	border-radius: 50%;
+  animation: sk-pulse 1.2s infinite cubic-bezier(0.455, 0.03, 0.515, 0.955); 
+}
+
+@mixin placeholders($color, $opacity, $fw: 400, $transition: false, $class: ''){   
+  &#{$class}::-webkit-input-placeholder{color: rgba($color, $opacity); opacity: 1; font-weight: $fw; @if $opacity == 0{font-size: 0;}; @if $transition{transition: #{$transition} .25s} }
+  &#{$class}::-moz-placeholder{color: rgba($color, $opacity); opacity: 1; font-weight: $fw; @if $opacity == 0{font-size: 0;}; @if $transition{transition: #{$transition} .25s}  }
+  &#{$class}:-ms-input-placeholder{color: rgba($color, $opacity); opacity: 1; font-weight: $fw; @if $opacity == 0{font-size: 0;}; @if $transition{transition: #{$transition} .25s}  }
+  &#{$class}:-moz-placeholder{color: rgba($color, $opacity); opacity: 1; font-weight: $fw; @if $opacity == 0{font-size: 0;}; @if $transition{transition: #{$transition} .25s}  }
+}
+
+@mixin hide-input(){
+  position: absolute;
+  left: 0;
+  top: 0;  
+  width: 1px;
+  height: 1px;
+  border: 0;
+  outline: none;
+  opacity: 0;
+}
+
+@mixin createList($s1, $property, $values, $suffix: '', $param: '') {
+	@each $value in $values {
+		@at-root #{'.' + $s1 + (index($values, $value)) + $suffix + $param}{
+			#{$property}: #{$value};
+		}
+	} 	
+} 
+
+@mixin createLocalVar($s1, $property, $values) {
+	@each $value in $values {
+		@at-root #{'.' + $s1 + (index($values, $value))}{
+			#{'--' + $property}: #{$value};
+		}
+	} 	
+} 
+
+@mixin createLocalVarRGB($s1, $property, $values, $single: '') {
+	@if $single != '' {
+		@at-root #{'.' + $s1}{
+			#{'--' + $property}: #{hex-to-rgb($values)};
+		}
+	} @else {
+		@each $value in $values {
+			@at-root #{'.' + $s1 + (index($values, $value))}{
+				#{'--' + $property}: #{hex-to-rgb($value)};
+			}
+		} 
+	}	
+} 
+
+@mixin createPair($s1, $property, $values, $replace, $resolutions: '', $ignore: '') {  
+	$values: $values;
+	
+	@if $ignore == '' {
+		@if $replace == '' {
+			$replace: $values;
+		}
+	}
+
+	@each $value in $values {
+		@at-root #{'.' + $s1 + nth($replace, index($values, $value))}{
+			#{$property}: #{$value};
+		}
+	} 
+
+	@if $resolutions != '' {
+		@each $res in $resolutions {
+
+			//XLM
+			@if $res == 'xlm' {
+				@include xlm{
+					@each $value in $values {
+						@at-root #{'.' + $s1 + nth($replace, index($values, $value)) + '_' + $res}{
+							#{$property}: #{$value};
+						}
+					} 	
+				}
+			}
+
+			//LGM
+			@if $res == 'lgm' {
+				@include lgm{
+					@each $value in $values {
+						@at-root #{'.' + $s1 + nth($replace, index($values, $value)) + '_' + $res}{
+							#{$property}: #{$value};
+						}
+					} 	
+				}
+			}
+
+			//LG
+			@if $res == 'lg' {
+				@include lg{
+					@each $value in $values {
+						@at-root #{'.' + $s1 + nth($replace, index($values, $value)) + '_' + $res}{
+							#{$property}: #{$value};
+						}
+					} 	
+				}
+			}
+
+			//MD
+			@if $res == 'md' {
+				@include md{
+					@each $value in $values {
+						@at-root #{'.' + $s1 + nth($replace, index($values, $value)) + '_' + $res}{
+							#{$property}: #{$value};
+						}
+					} 	
+				}
+			}
+
+			//MDM
+			@if $res == 'mdm' {
+				@include mdm{
+					@each $value in $values {
+						@at-root #{'.' + $s1 + nth($replace, index($values, $value)) + '_' + $res}{
+							#{$property}: #{$value};
+						}
+					} 	
+				}
+			}
+
+			//SMM
+			@if $res == 'smm' {
+				@include smm{
+					@each $value in $values {
+						@at-root #{'.' + $s1 + nth($replace, index($values, $value)) + '_' + $res}{
+							#{$property}: #{$value};
+						}
+					} 	
+				}
+			}
+		} 		
+	}	
+}  
+
+@mixin createGrad($s1,$dir, $values, $s2: '') {
+	@each $value in $values {
+		@at-root #{'.' + $s1 + (index($values, $value)) + $s2}{
+			background: linear-gradient(#{$dir}, rgba($value,0) 0%,rgba($value,1) 100%); 
+		}
+	} 	
+} 
+
+@mixin createGradHalf($s1,$dir, $values, $s2: '') {
+	@each $value in $values {
+		@at-root #{'.' + $s1 + (index($values, $value)) + $s2}{
+			background: linear-gradient(#{$dir}, rgba($value,0) 20%,rgba($value,1) 90%, rgba($value,1) 100%); 
+		}
+	} 	
+} 
+
+@mixin createGradHalf2($s1,$dir, $values, $s2: '') {
+	@each $value in $values {
+		@at-root #{'.' + $s1 + (index($values, $value)) + $s2}{
+			background: linear-gradient(#{$dir}, rgba($value,0) 50%,rgba($value,1) 90%, rgba($value,1) 100%); 
+			@include lgm{
+				background: linear-gradient(#{$dir}, rgba($value,0) 0%,rgba($value,1) 90%, rgba($value,1) 100%); 	
+			}
+		}
+	} 	
+} 
+
+@mixin title1{
+  display: block;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: s(48px);
+  font-weight: 700;
+  font-size: clamp(s(32px), 4.5vw, s(48px));
+  min-height: .0000001vw;
+  line-height: (50/48);
+
+	@include lgm{
+		line-height: (35/32);	
+	}
+}
+
+@mixin title2{
+  display: block;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: s(36px);
+  font-weight: 700;
+  font-size: clamp(s(24px), 3.5vw, s(36px));
+  min-height: .0000001vw;
+  line-height: (40/36);
+
+	@include lgm{
+		line-height: (25/24);	
+	}
+}
+
+@mixin title3{
+  display: block;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: s(24px);
+  font-weight: 700;
+	line-height: (30/24);
+
+	@include lgm{
+		font-size:  s(18);
+		line-height: (20/18);	
+	}
+}
+
+@mixin text3{
+  font-size: s(24px);
+	line-height: (30/24);
+
+	@include lgm{
+		font-size:  s(18);
+		line-height: (20/18);	
+	}
+}
+
+@mixin title4{
+  display: block;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: s(19px);
+  font-weight: 700;
+
+	@include lgm{
+		font-size:  s(16);
+		line-height: (20/16);	
+	}
+}
+
+
+@mixin list-check{
+  @include list-reset;  
+  text-align: left;
+
+  li{
+    padding-left: 33px; 
+    background: url(../layout/checkfill.svg) left center no-repeat;
+  }
+
+  li + li{
+    margin-top: .7em
+  }
+
+	@at-root .color_primary2 &{
+		li{
+			background-image: url(../layout/checkfill2.svg)
+		}
+	}
+
+	@at-root .color_primary3 &{
+		li{
+			background-image: url(../layout/checkfill3.svg)
+		}
+	}
+}
+
+@mixin list-numbers{
+  @include list-reset;	  
+  text-align: left;
+	counter-reset: listnumbers; 
+
+  li{
+   
+		&::before{
+			counter-increment: listnumbers;
+			float: left;
+			content: counter(listnumbers) ". ";			
+			font-size: 3em;
+			line-height: 1;
+			padding: 2px 10px 8px 0;
+			color: var(--color-primary, $color1);
+		}
+
+		&:after{
+			content:"";
+			display:table;
+			clear:both;
+		}
+  }
+
+  li + li{
+    margin-top: 1.8em
+  }
+}
+
+@mixin list-arrow{
+  @include list-reset;	  
+  text-align: left;
+
+  li{
+		position: relative;
+		padding-left: 24px;
+   
+		&::before{
+			content: '';
+			position: absolute;
+			box-sizing: content-box;
+			width: 0;
+			height: 0;	
+			left: 0;
+			top: .5em;
+			border: 12px solid transparent;
+			border-left-color: var(--color-primary, $color1); 
+			border-top-width: 6px;
+			border-bottom-width: 6px;
+		}
+  }
+
+	.color_white & li::before{
+		border-left-color: #fff;
+	}
+
+  li + li{
+    margin-top: 1em
+  }
+
+	ul{
+		margin-top: 1em	
+	}
+}
+
+
+
+

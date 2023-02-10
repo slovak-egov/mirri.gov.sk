@@ -1,0 +1,121 @@
+//$pxRem
+$px_rem: 16px;
+@function rem($size) {  
+  @if ($size == 0) {
+      @return $size;
+  }
+  @if unit($size) == "px" {
+      @return calc($size / $px_rem) * 1rem;
+  } @else if unitless($size) {
+      @return calc(($size * 1px) / $px_rem) * 1rem;
+  } @else {
+      @return $size;
+  }
+}
+
+@function s($size){
+   @return rem($size);    
+}
+
+$layout_width_full: 1440px;
+
+$layout_width: rem(960);
+
+$layout_width_xlm: 900px;
+$layout_width_lgm: 570px;
+$layout_width_mdm: 400px;
+$layout_width_smm: 300px;
+$layout_space: rem(20px);
+
+//Breakpoints
+$screen-min-min: 320px;
+$screen-ssm-min: 421px;
+$screen-sm-min: 578px;
+$screen-md-min: 768px;
+$screen-lg-min: 1101px;
+$screen-xl-min: 1341px;
+$screen-xxl-min: 1601px;
+$screen-xxxl-min: 1701px;
+
+//Breakpoints
+$screen-min-max: 319px;
+$screen-ssm-max: 420px;
+$screen-sm-max: 577px;
+$screen-md-max: 767px;
+$screen-lg-max: 1100px;
+$screen-xl-max: 1340px;
+$screen-xxl-max: 1600px;
+$screen-xxxl-max: 1700px;
+$screen-full-max: $layout_width_full;
+
+
+//LINES
+$lineheight10: 1.31;
+$lineheight12: 14px;
+$lineheight14: 1.42857143;
+$lineheight16: 22px;
+$lineheight16_em: 1.375;
+$lineheight18: 1.3333333;
+$lineheight20: 1.25;
+
+//VARIABLES
+$mq_min: 319px;
+
+$font1: 'Source Sans Pro', sans-serif;
+
+$fontsize: $px_rem;
+$lineheight: $lineheight16_em;
+$fontweight: 400;
+$color: #0B0C0C;
+$background: #fff;
+$font: $font1;
+$color1: $color;
+$color2: #004C96;
+$color3: #f0e7d9;
+$color4: #B58840;
+$color5: #005EA5;
+
+$c1: $color1;
+$c2: $color2;
+$c3: $color3;
+$c4: $color4;
+$c5: $color5;
+
+$colors: $c1, $c2, $c3, $c4, $c5;
+
+$c_grey1: #1A1A18;
+$c_grey2: #bfc1c3;
+$c_grey3: #DEE0E2;
+$c_grey4: #F3F2F1;
+$c_grey5: #626A6E;
+$colors_grey: $c_grey1, $c_grey2, $c_grey3, $c_grey4, $c_grey5;
+
+//SOCIAL
+$c_fb: #3b5998;
+$c_tw: #00acee;
+$c_insta: #8a3ab9;
+
+$c_yt: #ff0000;
+$c_in: #0077b5;
+$c_mess: #006AFF;
+$c_wa: #25D366;
+$c_error: #C84F4F;
+
+$grid_space: 20px;
+$grid_space_small: 10px;
+$grid_space_mid: 30px;
+$grid_space_big: 60px;
+
+$header_height: 90px;
+$header_offset: 70px;
+$header_height_mobile: 70px;
+$header_offset_mobile: 70px;
+
+$zindex_header: 300;
+
+$idsk_sm: 40.0625em;
+$idsk_mdm: 48.0525em;
+$idsk_md: 48.052501em
+
+
+

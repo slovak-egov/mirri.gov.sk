@@ -1,0 +1,284 @@
+/*
+ * header and footer:
+ *   dark-blue background: rgb(38, 59, 128)
+ *   light-blue background: rgb(0, 84, 161)
+ *   very light blue  rgb(236, 246, 254);
+ *   blue rgb(223, 239, 254)
+ *   blue5 background-color: rgb(175, 198, 219);
+ *   text color: white
+ *   hoover text color: rgb(21, 157, 253)
+ *   
+ *
+ * white background rgb(255, 255, 255)
+ *
+ * Header fonts: font-size font-weight
+ * h1 28px 700
+ * h2 22px 700
+ * h3 20px 700
+ * h4 17px 600
+ * h5 17px 700
+ * h6 16px 700
+ *    16px 400 footer text
+ * h7 15px 700
+ * h8 14px 400
+ * top navigation bar 17px 600 
+ */
+
+html.js  {
+  margin: 0 !important;
+}
+
+.contact {
+  color: white;
+  background-color: rgb(0, 84, 161);
+  text-align: center;
+  line-height: 80px;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.contact a {
+  color: white;
+   text-decoration: none;
+}
+
+.left {
+  padding: 40px;
+}
+
+
+
+.tab button {
+  color: #a8caea;
+  background-color: white;
+  height: 50px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #dfeffe #dfeffe white #dfeffe;
+  box-shadow: 0 1px 10px 0 rgba(0,84,161,.13);
+  margin: 0px;
+  margin-right: -5px;
+  font-size: 17px;
+  font-weight: 600;
+  padding: 0px 20px;
+}
+
+
+
+/*
+ * #0054a1  dark blue font
+ * #a8caea  light blue font
+ */
+
+
+.main-form {
+  justify-content: center;
+  align-content: center;
+  background-color: white;
+  border: 1px solid #dfeffe;
+  box-shadow: 0 1px 10px 0 rgba(0,84,161,.13);
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.ministry-field {border: 1px solid #dfeffe;}
+.area-field {border: 1px solid #dfeffe;}
+.state-field {border: 1px solid #dfeffe;}
+.level-field {border: 1px solid #dfeffe;}
+.count-field {border: 1px solid #dfeffe;}
+.submit-field {
+  border: 1px solid #dfeffe;
+  margin-top: 8px;
+  padding-top: 8px;
+}
+
+
+select {
+/*  border-width: 6px 24px 6px 9px;
+  border-style: solid;*/
+    max-width: 250px;
+
+  width: 100%;
+}
+
+input[type=radio] {
+  width: 50px;
+}
+
+
+input[type=submit] {
+}
+
+#result-count{
+  padding-top: 2px;
+  padding-left: 20px;
+}
+
+#search-table {
+  box-shadow: 0 1px 10px 0 rgba(0,84,161,.13);
+  max-width: 100vw;
+  overflow: auto;
+  width: 100%;
+}
+
+#search-table, #search-table th, #search-table td {
+  border: 1px solid #dfeffe;
+  border-collapse: collapse;
+  padding: 5px;
+  line-height: 1.3;
+}
+
+#search-table th:nth-child(1) {width: 0%;}
+#search-table th:nth-child(2) {width: 15%;}
+#search-table th:nth-child(3) {width: 55%;}
+#search-table th:nth-child(4) {width: 15%;}
+
+#search-table th:nth-child(1), #search-table td:nth-child(1) {
+  display:none;
+}
+
+#search-table th {
+  background-color: white;
+  color: #0054a1;
+  font-size: 17px;
+  font-weight: 600;
+  padding: 10px;
+}
+
+#search-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#search-table tr:hover {
+  background-color:#ddd;
+}
+
+
+.right {
+  text-align: right;
+  padding: 40px;
+}
+
+/* 
+ * stragegy detail tab
+ *
+ */
+#detail {
+  width: 100%;
+  border: 1px solid #dfeffe;
+  box-shadow: 0 1px 10px 0 rgba(0,84,161,.13);
+}
+
+#detail-table {
+  box-shadow: 0 1px 10px 0 rgba(0,84,161,.13);
+  width: 100%;
+}
+
+#detail-table, #detail-table th, #detail-table td {
+  border: 1px solid #dfeffe;
+  border-collapse: collapse;
+  padding: 5px;
+  line-height: 1.3;
+}
+
+#detail-table tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+#site-wrapper {
+  overflow: initial !important;
+  width: 100vw;
+}
+
+.left,
+.right {
+  display: none;
+}
+
+@media screen and (min-width:768px) {
+
+  .left {
+    position: absolute;
+    left: 0;
+    top: 50px;
+  }
+  
+  .right {
+    position: absolute;
+    right: 0;
+    top: 50px;
+  }
+}
+
+.container.strategie {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  z-index: 2;
+}
+
+#footer-top {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+@media screen and (min-width:768px) {
+  .row-eq-height{
+    padding-top: 100px;
+    display: flex;
+    align-items: center;
+    color: white !important;
+  }
+  
+  .wrapper-form {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 30px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    justify-content: center;
+    align-content: center;
+  }
+  
+  fieldset {
+    width: 250px;
+  }
+}
+
+@media screen and (max-width:767px) {
+  .tab button {
+    display: block;
+    width: 100%;
+  }
+  
+  .main-form {
+    padding: 20px 15px;
+  }
+  
+  fieldset {
+    display: block;
+    max-width: 100%;
+  }
+  
+  select {
+    width: 100%;
+  }
+}
+  
+  #submit-button {
+    display: block;
+    width: 100%;
+  }
+  
+.row-eq-height img {
+  max-width: 100%;
+  padding: 15px;
+  display: block;
+  margin:0 auto;
+}
+
+body {
+  color: black;
+}

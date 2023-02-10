@@ -1,2 +1,4 @@
 # mirri.gov.sk
-Webový portál MIRRI
+Zdrojový kód webového portálu mirri.gov.sk
+
+![mirri.gov.sk](screenshot.png)

@@ -1,0 +1,80 @@
+.sp{
+  $glob: &; 
+  $spaces: 160, 140,130, 120, 110, 100, 90, 80, 70, 60, 55, 50, 45, 40, 35, 30, 25, 20, 15, 10, 5, 0, 'auto';
+  $props: (
+    'margin': 'mg',
+    'padding': 'pd',
+    'margin-top': 'mgt',
+    'margin-bottom': 'mgb',
+    'margin-left': 'mgl',
+    'margin-right': 'mgr',
+    'padding-top': 'pdt',
+    'padding-bottom': 'pdb',
+    'padding-left': 'pdl',
+    'padding-right': 'pdr'  
+  ); 
+
+  $spaceobj: (
+    'xl', 'lg', 'md'
+  );
+
+  //MIXIN
+  @mixin create($s1, $property, $spaces, $s2: '') {    
+    @each $space in $spaces {
+      @at-root #{'.' + $s1 + '-' + $space + $s2} {
+        @if $space == 'auto' {#{$property}: #{$space}};
+        @if $space != 'auto' {#{$property}: s($space)};
+      }
+    } 
+  }  
+
+  //MIXIN
+  @mixin create_respo() {
+    @include xxlm{
+      @each $name, $s1 in $props {
+        @include create($s1, $name, $spaces, 'xxl');
+      }  
+    }
+
+    @include xlm{
+      @each $name, $s1 in $props {
+        @include create($s1, $name, $spaces, 'xl');
+      }  
+    }
+
+    @include lgm{
+      @each $name, $s1 in $props {
+        @include create($s1, $name, $spaces, 'lg');
+      }  
+    }
+
+    @include mdm{
+      @each $name, $s1 in $props {
+        @include create($s1, $name, $spaces, 'md');
+      }  
+    }
+
+    @include idsk_mdm{
+      @each $name, $s1 in $props {
+        @include create($s1, $name, $spaces, 'idsk_md');
+      }  
+    }
+  }
+
+  //CREATE BASE CLASSES
+  @each $name, $s1 in $props {
+    @include create($s1, $name, $spaces);
+  }
+
+  //CREATE RESPO CLASSES
+  @include create_respo();
+}
+
+.mgt-1em{
+  margin-top: 1em;
+}
+
+.mgt-05em{
+  margin-top: .5em;
+}
+

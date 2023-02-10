@@ -1,0 +1,109 @@
+.footer{
+  &_thirds{
+    @include idsk_sm{
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 -10px;
+    }
+
+    > .govuk-grid-column-one-third{
+      @include idsk_sm{
+        padding: 0;
+        width: calc(33.333% - 20px);
+        margin: 0 10px;
+      }
+    }   
+    
+    > .govuk-grid-column-full{
+      @include idsk_sm{
+        padding: 0;
+        width: calc(100% - 20px);
+        margin: 0 10px;
+      }
+    }
+
+    > .govuk-grid-column-two-thirds{
+      @include idsk_sm{
+        padding: 0;
+        width: calc(66.666% - 20px);
+        margin: 0 10px;
+      }  
+    }
+
+    > .govuk-grid-column-two-thirds-lgm,
+    > .govuk-grid-column-one-third{
+      @include lgm{
+        @include idsk_sm{
+          padding: 0;
+          width: calc(100% - 20px);
+          margin: 0 10px;
+        }
+      }
+    }
+  }
+
+  &_contact.govuk-grid-column-full{
+    padding: s(20) 0;
+    font-size: s(19);
+
+    a{
+      font-size: s(24);
+    }
+  }
+
+  &_big{
+    font-size: s(18);
+  }
+
+  &_border{
+    border-top: 1px solid $c_grey2;
+  }
+  
+  &_hr{
+    border: 0;
+    height: 0;
+    box-sizing: content-box;
+    border-top: 1px solid $c_grey2;
+  }
+
+  &_logos{
+    text-align: center;
+    
+    @include lgm{
+      text-align: left;
+    }
+    > a{
+      display: block;
+    }
+  }
+
+  &_logo1{    
+    display: block;
+    width: 100%;
+    max-width: 290px;
+    @include lg{
+      margin-right: 0;
+      margin-left: auto;
+    }
+  }
+
+  &_logo2{
+    display: block;
+    width: 100%;
+    max-width: 290px;
+    @include lg{
+      margin-right: 0;
+      margin-left: auto;
+    }
+  }
+
+  &_copy{
+    
+    
+    @include lg{
+      text-align: left;
+      margin-left: auto;
+      max-width: 290px;
+    }
+  }
+}

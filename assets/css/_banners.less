@@ -1,0 +1,147 @@
+.banner {
+    display: block;
+    overflow: hidden;
+    max-width: 100%;
+    height: auto;
+    
+    img {
+        width: 100%;
+    }
+    
+    &.main {
+        
+        &.top {
+            width: 100%;
+            max-width: 1300px;
+            max-height: 200px;
+            margin: -70px auto 25px;
+            
+            @media @991 {
+                margin-top: -40px;
+            }
+        }
+        
+        &.left {
+            width: 300px;
+            height: 1000px;
+            max-height: 1000px;
+            position: absolute;
+            left: 50%;
+            top: 0px;
+            margin-left: -950px;
+            margin-top: 0;
+            
+            
+            @media @1800 {
+                display: none;
+            }
+        }
+        
+        &.right {
+            width: 300px;
+            height: 1000px;
+            max-height: 1000px;
+            position: absolute;
+            right: 50%;
+            top: 0px;
+            margin-right: -950px;
+            margin-top: 0;
+            
+            
+            @media @1800 {
+                display: none;
+            }
+        }
+    }
+}
+
+.row.banners {
+    margin-top: -50px;
+    margin-bottom: 50px;
+    
+    @media @991 {
+        margin-top: -20px;
+        margin-bottom: 20px;
+    }
+}
+
+.banners-mobile-tablet-only {
+    display: none;
+
+    .row.banners {
+        margin-top: -62.5px;
+        margin-bottom: 37.5px;
+
+        @media @991 {
+            margin-top: -20px;
+            margin-bottom: 20px;
+        }
+    }
+
+    .banner {
+        &.center {
+            margin: 12.5px auto;
+            max-height: 120px;
+
+            @media @991 {
+                margin: 25px auto;
+            }
+        }
+    }
+
+    @media @1281 {
+        display: block;
+    }
+}
+
+.banners-block {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    
+    .banner {
+        display: flex;
+        flex-basis: 20%;
+        padding: 10px 0;
+        margin: 20px 0;
+
+        @media @767 {
+            flex-basis: 33% !important;
+        }
+
+        @media @480 {
+            flex-basis: 50% !important;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    }
+
+    &.bannery_vlavo,
+    &.bannery_vpravo {
+        .banner {
+            flex-basis: 100%;
+            padding: 10px 0;
+
+            @media @991 {
+                flex-basis: 50%;
+                padding: 10px 15px;
+                margin: 10px 0;
+            }
+        }
+    }
+
+    &.bannery_main {
+        padding-top: 20px;
+        .banner {
+            padding: 10px 15px;
+        }
+    }
+}
+
+.banners-container {
+    margin-top: -70px;
+}

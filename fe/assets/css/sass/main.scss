@@ -1,0 +1,36 @@
+//Import all mixins, fonts and variables
+@import './parts/fonts';
+@import './parts/variables';
+@import './parts/mixins';
+@import './parts/func';
+
+/*DEFAULTS*/
+@import './parts/default';
+
+/*STYLE PRIMARY*/
+@import './parts/style';
+
+/*ITEMS*/
+@import './parts/item';
+
+/*SWIPER*/
+@import './parts/swiper';
+
+/*BOX*/
+@import './parts/box';
+
+/*ELEMENT*/
+@import './parts/element';
+
+/*HEADER*/
+@import './parts/header';
+
+/*FOOTER*/
+@import './parts/footer';
+
+/*SPACING*/
+@import './parts/spacing';
+
+/*PRESETS*/
+@import './parts/presets';
+
